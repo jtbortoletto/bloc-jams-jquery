@@ -4,6 +4,7 @@
     $(this).attr('playState', player.playState);
   });
   $('button#next').on('click', function() {
+      console.log("Next")
       if (player.playState !== 'playing') { return; }
 
       const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
@@ -14,6 +15,7 @@
       player.playPause(nextSong);
   });
   $('button#previous').on('click', function() {
+      console.log("Previous");
       if (player.playState !== 'playing') {return; }
 
       const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
