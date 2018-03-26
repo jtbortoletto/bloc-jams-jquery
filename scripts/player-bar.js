@@ -4,7 +4,7 @@
     $(this).attr('playState', player.playState);
   });
   $('button#next').on('click', function() {
-      console.log("Next")
+      console.log("Next");
       if (player.playState !== 'playing') { return; }
 
       const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
@@ -20,8 +20,9 @@
 
       const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
       const previousSongIndex = currentSongIndex - 1;
-      if (previousSongIndex <= album.songs.length) {return; }
+      if (previousSongIndex >= album.songs.length) {return; }
 
+      console.log("Song index was " + currentSongIndex + ", now is " + previousSongIndex);
       const previousSong = album.songs[previousSongIndex];
       player.playPause(previousSong);
   });
