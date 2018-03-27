@@ -15,12 +15,23 @@
       player.playPause(nextSong);
   });
 
+  $('#time-control input').on('input', function (event) {
+    player.skipTo(event.target.value);
+  });
+
+  $('#volume-control input').on('input', function(event) {
+    player.setVolume(event.target.value)
+  });
+
   setInterval( () => {
     if (player.playState !== 'playing') { return; }
     const currentTime = player.getTime();
     const duration = player.getDuration();
     const percent = (currentTime / duration) * 100;
+    $('#time-control .current-time').text( currentTime );
     $('#time-control input').val(percent);
+    $('#time-control .total-time').text( duration );
+    console.log("Total time");
   }, 1000);
   $('button#previous').on('click', function() {
       console.log("Previous");
